@@ -1,5 +1,4 @@
 /*
-!!!!!       Method 2 not working        !!!!!
 Sum of all submatrices of a given Matrix
 Explaination     
         1,1
@@ -142,20 +141,21 @@ int method2(int a[][10], int m, int n){
     int sum = 0;
     for(int tlx = 0 ; tlx < m; tlx++){ // tlx : top left x
         for(int tly = 0 ; tly < n; tly++){ // tly : top left y
-            for(int brx = tlx+1 ; brx < m; brx++){ // brx : bottom right x
-                for(int bry = tly+1 ; bry <n; bry++){ // bry : bottom right y
+            for(int brx = tlx ; brx < m; brx++){ // brx : bottom right x
+                for(int bry = tly ; bry <n; bry++){ // bry : bottom right y
                     // Add pre[tlx-1][tly-1] as elements between (0, 0)
                     // and (tlx-1, tly-1) are subtracted twice
                     if (tlx > 0 && tly > 0)
-                        sum += pre[brx][bry] +  pre[tlx-1][tly-1];
+                        sum += pre[brx][bry] +  pre[tlx-1][tly-1] - pre[tlx-1][bry] - pre[brx][tly-1];
                     // Remove elements between (0, 0) and (tlx-1, bry)
                     else if (tlx > 0)
                         sum += pre[brx][bry] - pre[tlx-1][bry];  
                     // Remove elements between (0, 0) and (brx, tly-1)
                     else if (tly > 0)
-                        sum += pre[brx][bry] - pre[brx][tly-1];  
+                        sum += pre[brx][bry] - pre[brx][tly-1]; 
                     else 
-                        sum += pre[brx][bry];
+                        sum += pre[brx][bry]; 
+                    
                 }
             }
         }
