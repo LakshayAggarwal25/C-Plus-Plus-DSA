@@ -134,7 +134,7 @@ int method1(int a[][10], int m, int n){
     }
     return sum;
 }
-/*int method2(int a[][10], int m, int n){
+int method2(int a[][10], int m, int n){
     //Creating a prefix Sum matrix
     int pre[10][10] = {0};
     prefix(a,pre,m,n);
@@ -142,29 +142,26 @@ int method1(int a[][10], int m, int n){
     int sum = 0;
     for(int tlx = 0 ; tlx < m; tlx++){ // tlx : top left x
         for(int tly = 0 ; tly < n; tly++){ // tly : top left y
-            for(int brx = tlx ; brx < m; brx++){ // brx : bottom right x
-                for(int bry = tly ; bry <n; bry++){ // bry : bottom right y
-                    int m = pre[brx][bry];
-                    int u = 0;
-                    if(tlx != 0){
-                        u = pre[tlx-1][bry];
-                    }
-                    int s= pre[brx][0];
-                    if(tly != 0){
-                        s = pre[brx][tly-1];
-                    }
-                    int e = 0;
-                    if(tlx != 0 && tly != 0){
-                        e = pre[tlx-1][tly-1];
-                    }
-                    sum += m - u - s + e; 
+            for(int brx = tlx+1 ; brx < m; brx++){ // brx : bottom right x
+                for(int bry = tly+1 ; bry <n; bry++){ // bry : bottom right y
+                    // Add pre[tlx-1][tly-1] as elements between (0, 0)
+                    // and (tlx-1, tly-1) are subtracted twice
+                    if (tlx > 0 && tly > 0)
+                        sum += pre[brx][bry] +  pre[tlx-1][tly-1];
+                    // Remove elements between (0, 0) and (tlx-1, bry)
+                    else if (tlx > 0)
+                        sum += pre[brx][bry] - pre[tlx-1][bry];  
+                    // Remove elements between (0, 0) and (brx, tly-1)
+                    else if (tly > 0)
+                        sum += pre[brx][bry] - pre[brx][tly-1];  
+                    else 
+                        sum += pre[brx][bry];
                 }
             }
         }
     }
     return sum;
-}*/
-
+}
 int method3(int a[][10], int m, int n){
     int sum = 0;
     for(int  i = 0; i < n; i++){
@@ -184,10 +181,8 @@ int main() {
     output(a,m,n);
     int s1 = method1(a,m,n);
     cout <<"Method 1(brute force, time complexity O(n^6)) "<< s1 << endl;
-    /*
     int s2 = method2(a,m,n);
-    cout<<s2;
-    */
+    cout<<s2<<endl;
     int s3 = method3(a,m,n);
     cout<<s3;
 }
