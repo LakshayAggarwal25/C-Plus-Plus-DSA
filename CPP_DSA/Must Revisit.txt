@@ -1,0 +1,25 @@
+Arrays -->
+
+Rainwater Harvesting
+Maximum Circular Subarray Sum
+Maximum Length Bitonic Subarray
+Spiral Print
+Chewbacca and Number
+Sum of two Arrays
+Broken Calulator i.e factorial of a big number like 100
+
+Strings -->
+
+Sanket and Strings
+Finding CB Numbers
+
+Sorting and Searching -->
+
+Aggressive Cows
+Book Allocation
+Bubble Sort 
+Counting Sort
+Insertion Sort
+Selection Sort
+kth Root
+Painters Problem
