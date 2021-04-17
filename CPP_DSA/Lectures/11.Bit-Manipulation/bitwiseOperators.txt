@@ -1,0 +1,169 @@
+Bitwise Operators
+
+& And 
+
+    --> 0 & 0 = 0
+    --> 0 & 1 = 0
+    --> 1 & 0 = 0
+    --> 1 & 1 = 1
+
+| OR
+
+    --> 0 | 0 = 0
+    --> 0 | 1 = 1
+    --> 1 | 0 = 1
+    --> 1 | 1 = 1
+
+^ XOR
+
+    --> 0 ^ 0 = 0
+    --> 0 ^ 1 = 1
+    --> 1 ^ 0 = 1
+    --> 1 ^ 1 = 0
+
+All of these three are binary operators as they require 2 operands to work
+
+
+Eg.
+If a = 5, b = 7
+and we do a & b then it will perform this operation on a bit level
+
+a = 5 = 0000101
+b = 7 = 0000111
+       &________
+      = 0000101 ==> 5
+
+hence, 5 & 7 = 5
+
+Let a = 5, b = 6
+    
+    a | b   = 0000101 
+              0000110  
+             |________
+            = 0000111 ==>7
+
+hence, 5 | 6 = 7
+
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+
+Shift Operators : binary operators
+<< Left Shift
+>> Right Shift
+
+5<<1 means, 00000101 (5) we will discard the left most bit and and 0 at the right most end
+           =00001010 (10)
+
+leftshift by 1 means multiply by 2
+a=a<<1 ==> a = a*2 
+
+5<<2 means, 00000101 (5) we will discard the 2 left most bit and and 2 0's at the right most end
+           =00010100 (20) 
+leftshift by 2 means multiply by 2^2
+
+Therefore, a<<b means a*2^b;
+
+Similarly a>>b means a/2^b
+
+
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+
+
+Common Bit Tasks
+If last bit of any number is 1 then that number is odd else it is even
+Therefore,  cin>>n;
+            if((n & 1) == 1)
+                cout<<"n is odd";
+            else
+                cout<<"n is even";
+
+
+
+Find i'th bit(From Right)
+In this case we need to create a number(mask), then perform the 'and' operation with that number if ans is
+greater than 0 then the bit is 1, else the bit is 0
+Eg. if the given bit 00100101 and we to find the bit at 2nd place from right then, we will do
+
+                     00100101
+                     00000100
+                    &________
+                    =00000100 > 0, therefore the bit is 1 
+
+Now, we can create this mask using the left shift operator,i.e 1<<i, where i is place of the bit we want to 
+find.
+i.e Mask = 1<<i
+
+
+
+
+Set i'th bit(From Right)
+Make the i'th bit as 1
+mask = 1<<i
+Perform N | Mask
+Eg.if the given bit 00100101 and we to set the bit at 4th place from right then, we will do
+     
+     mask   = 1<<i
+            = 1<<4
+            = 0010000
+
+    performing n|mask : 
+
+                        00100101
+                        00010000
+                       |________
+                       =00110101 
+
+
+
+
+
+Clear i'th bit(From Right)
+Make the i'th bit as 0
+mask = 1<<i;
+~mask = ~(1<<i);
+Perform N & ~Mask
+Eg.if the given bit 00100101 and we to clear the bit at 5th place from right then, we will do
+     
+     mask   = 1<<i
+            = 1<<5
+            = 00100000
+    
+    ~mask   = ~(00100000)
+            = 11011111
+    
+    performing n & (~mask) : 
+
+                        00100101
+                        11011111
+                       &________
+                       =00000101
+
+
+
+
+
+Update i'th bit to v (From Right)
+Since we don't know what bit is already present at i'th position, so we will clear that bit first 
+i.e make that bit as 0 and then do a 'OR' operation with the mask, which in this case will be v<<i;
+Eg.if the given bit 00100101(n) and we to update the bit at 5th(i) place from right to 1(v) then, we will do
+     
+     n = 00100100
+     clearing (n,5) = 00000100
+
+     mask   = v<<i
+            = 1<<5
+            = 00100000
+
+    performing n | mask : 
+
+                        00000101
+                        00100000
+                       |_______
+                       =00100101
