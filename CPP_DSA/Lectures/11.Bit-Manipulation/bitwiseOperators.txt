@@ -54,7 +54,7 @@ Shift Operators : binary operators
 << Left Shift
 >> Right Shift
 
-5<<1 means, 00000101 (5) we will discard the left most bit and and 0 at the right most end
+5<<1 means, 00000101 (5) we will discard the left most bit and and one 0 at the right most end
            =00001010 (10)
 
 leftshift by 1 means multiply by 2
@@ -167,3 +167,53 @@ Eg.if the given bit 00100101(n) and we to update the bit at 5th(i) place from ri
                         00100000
                        |_______
                        =00100101
+
+
+Clear last i Bit'
+In this case if we create a mask as 0 upto to the i'th bit and rest as 1 then performing 'AND' operation
+with n will clear the last n bits 
+Eg
+clear last 5 bits
+    n = 10010111
+    mask    =   -1<<i {Here, -1 is used because it is stored as 1111 in the computer memory}
+            =   -1<<5
+            =    11100000
+    performing n | mask : 
+
+                        10010111
+                        11100000
+                       |_______
+                       =10000000 
+
+
+
+
+
+
+Clear a range of bits i.e from i to j (here j > i) 
+To clear a range of bits from j to i'th position we need to need to create a mask that is 
+0's to be persent at j to i'th position and rest to the poistions as 1's
+Eg
+clear bits from 3 to 5 position
+    n = 10110111
+
+    int rightSideOnes = -1<<(j+1)
+                      = -1<<(5+1)
+                      = -1<<6
+                      = 11000000  
+
+    int leftSideOnes = 1<<(i) - 1
+                     = 1<<3 - 1
+                     = 1000 - 1
+                     = 0111
+
+
+    mask    = rightSideOnes | leftSideOnes
+            = 11100011
+
+    performing n & mask : 
+
+                        10110111
+                        11000111
+                       &_______
+                       =10000111
