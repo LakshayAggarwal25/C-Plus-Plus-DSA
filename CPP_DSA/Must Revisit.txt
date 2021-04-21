@@ -6,7 +6,8 @@ Maximum Length Bitonic Subarray
 Spiral Print
 Chewbacca and Number
 Sum of two Arrays
-Broken Calulator i.e factorial of a big number like 100
+Search in Rotated Sorted
+Broken Calculator i.e factorial of a big number like 100
 
 Strings -->
 
