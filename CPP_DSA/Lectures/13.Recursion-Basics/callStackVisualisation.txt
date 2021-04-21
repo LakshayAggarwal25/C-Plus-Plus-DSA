@@ -1,0 +1,51 @@
+Considering the following fibonacci function:
+
+int fib(int n){
+    if( n==0 || n==1){
+        return n;
+    }
+    return fib(n-1) + fib(n-2); 
+}
+int main(){
+    int n;
+    cin>>n;
+    cout<<fib(n);
+}
+
+// Consider n = 5,(refer to the callStackVisualisation dio)
+red represents the calls made
+blue represents the answer returned from the base Case
+green represents the answer returned from the f(n-1) call
+yellow represents the answer returned from the f(n-2) call
+
+
+
+//Section-2
+Anything written before the function call is known as Top to Bottom approach, here we do work while the call stack is building up
+Eg. In P1 we print the number and then move to the lower number, hence we get the decreasing order
+
+Anything written after the function call is known as Bottom to Top approach, here we do work while the call stack is falling
+Eg. In P2 we move to the smallest number, while going to the smallest number the call stack is building with the number 
+and once we reach the base case we start printing the number while the stack is falling.
+
+
+Considering increasing decreasing program
+P1: 
+void dec(int n){                      
+    if(n==0)
+    {
+        return;
+    }
+    cout<<n<<" ";
+    dec(n-1);
+}
+
+P2:
+void inc(int n){
+    if(n==0){
+        return ;
+    }
+    inc(n - 1);
+    cout<<n<<" ";
+}
+
