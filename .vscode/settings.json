@@ -9,7 +9,8 @@
         "random": "cpp",
         "fstream": "cpp",
         "istream": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "cmath": "cpp"
     },
     "cSpell.words": [
         "PQRS",
