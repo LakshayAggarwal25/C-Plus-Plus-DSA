@@ -6,7 +6,8 @@ in how many ways can you build the wall
 #include<iostream>
 using namespace std;
 int countNoOfWays(int n){
-    if(n<=3)    return 1;
+    if(n<=3)    
+        return 1;
 
     return countNoOfWays(n-1) + countNoOfWays(n-4);
 }

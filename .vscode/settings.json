@@ -10,7 +10,9 @@
         "fstream": "cpp",
         "istream": "cpp",
         "utility": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "typeindex": "cpp",
+        "typeinfo": "cpp"
     },
     "cSpell.words": [
         "PQRS",
