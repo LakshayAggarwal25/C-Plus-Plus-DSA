@@ -9,17 +9,19 @@ int main(){
     }
 
     int maxSum = 0; // maximum Sum
-    int cSum = 0; // current Sum
+    int currentSum = 0; // current Sum
 
 
-    //Generating all the sum of max sub-arrays
+    //Generating sum of the max sub-arrays
+
     for(int i = 0 ; i < n ; i++){
-        cSum = cSum + a[i];
-        if(cSum < 0){
-            cSum = 0;
+        currentSum = currentSum + a[i];
+        if(currentSum < 0){
+            currentSum = 0;
         }
-        maxSum = max(maxSum,cSum);
+        maxSum = max(maxSum,currentSum);
     }
-    cout<<"\nSum : "<<maxSum;
+    cout<<"Sum : "<<maxSum;
+
 }
 
