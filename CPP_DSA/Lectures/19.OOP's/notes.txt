@@ -1,0 +1,30 @@
+Some Special Functions that C++ Classes give when you create a class/object
+4 different special functions that are always present inside a class
+
+1.  Constructor
+        - that is responsible for creating an object
+        - gets called automatically and only once
+        - same name as class name
+        - Parametrized Constructor
+
+2.  Copy Constructor
+        - make a copy of the given object
+        - exists by default
+        - need to create our own copy Constructor to create a deep copy, this is only required when working with/using pointers 
+          inside class
+
+3.  Copy Assignment Operator
+        - denote by =
+        - copies when you do Assignment
+        - Car d = c; // This is a Copy Constructor
+        - Car d;
+        - d = c; // This is copy Assignment Operator
+        - here also to by default it creates a shallow copy, we can create deep copies by overriding the default Assignment Operator
+        - can be called as many times
+
+4.  Destructor
+        - Clear out the memory occupied by the object
+        - gets called automatically when the object goes out of scope
+        - need to override the Destructor when using pointers as data members 
+        - object that is created later will be the first one to get destroyed 
+
